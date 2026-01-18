@@ -2,18 +2,15 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8">
-  <title>Google Dorks Tool</title>
+  <title>Dorks Browser</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
 <div class="app">
-  <h1>🔍 Google Dorks Tool</h1>
-  <p class="subtitle">Generatore di query per audit & studio</p>
-
-  <label>Categoria</label>
-  <select id="category"></select>
+  <h1>🧭 Dorks Browser</h1>
+  <p class="subtitle">Esplora query avanzate senza uscire dalla pagina</p>
 
   <label>Parola chiave</label>
   <input id="keyword" placeholder="es. backup, password, laravel">
@@ -21,12 +18,30 @@
   <label>Dominio / TLD (opzionale)</label>
   <input id="site" placeholder="example.com oppure .it">
 
-  <button id="searchBtn">Apri ricerche</button>
+  <div class="box">
+    <strong>Tipologia</strong>
+    <label><input type="checkbox" class="type" value="directory" checked> Directory</label>
+    <label><input type="checkbox" class="type" value="backup" checked> Backup</label>
+    <label><input type="checkbox" class="type" value="config"> Config</label>
+    <label><input type="checkbox" class="type" value="database" checked> Database</label>
+    <label><input type="checkbox" class="type" value="logs"> Log</label>
+  </div>
 
-  <pre id="output"></pre>
+  <div class="box">
+    <strong>Estensioni file</strong>
+    <label><input type="checkbox" class="ext" value="sql" checked> .sql</label>
+    <label><input type="checkbox" class="ext" value="zip"> .zip</label>
+    <label><input type="checkbox" class="ext" value="env"> .env</label>
+    <label><input type="checkbox" class="ext" value="log"> .log</label>
+    <label><input type="checkbox" class="ext" value="json"> .json</label>
+  </div>
+
+  <button id="run">Genera query</button>
+
+  <pre id="results"></pre>
 
   <footer>
-    ⚠️ Uso lecito: audit, studio, siti propri, bug bounty autorizzati
+    ⚠️ Solo per studio, audit e siti autorizzati
   </footer>
 </div>
 

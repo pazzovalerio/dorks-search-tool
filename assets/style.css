@@ -1,19 +1,17 @@
 * { box-sizing: border-box; }
 
 body {
-  margin: 0;
   background: #0b0d12;
   color: #eaeaea;
   font-family: system-ui, sans-serif;
+  margin: 0;
 }
 
 .app {
-  max-width: 680px;
+  max-width: 760px;
   margin: auto;
   padding: 20px;
 }
-
-h1 { margin-bottom: 4px; }
 
 .subtitle {
   color: #9aa0aa;
@@ -21,47 +19,48 @@ h1 { margin-bottom: 4px; }
 }
 
 label {
+  display: block;
+  margin: 6px 0;
   font-size: 14px;
-  color: #b5b9c5;
 }
 
-input, select, button {
+input[type="text"], input {
   width: 100%;
-  padding: 11px;
-  margin: 8px 0 16px;
+  padding: 10px;
+  margin-bottom: 14px;
   background: #151924;
   border: 1px solid #2a2f3a;
   color: #fff;
   border-radius: 6px;
 }
 
+.box {
+  background: #121620;
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
 button {
+  width: 100%;
+  padding: 12px;
   background: #2563eb;
   border: none;
+  border-radius: 6px;
+  color: #fff;
   font-weight: bold;
   cursor: pointer;
 }
 
-button:hover { opacity: 0.9; }
-
 pre {
   background: #0f1320;
-  padding: 12px;
+  padding: 14px;
   border-radius: 6px;
+  margin-top: 16px;
   white-space: pre-wrap;
   font-size: 13px;
 }
 
-footer {
-  margin-top: 20px;
-  font-size: 12px;
-  color: #7f8596;
-  text-align: center;
-}
-
-/* ===============================
-   Risultati cliccabili
-=============================== */
 pre a {
   color: #60a5fa;
   text-decoration: none;
@@ -69,4 +68,11 @@ pre a {
 
 pre a:hover {
   text-decoration: underline;
+}
+
+footer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: #7f8596;
+  text-align: center;
 }

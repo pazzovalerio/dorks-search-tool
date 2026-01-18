@@ -1,35 +1,43 @@
-let DORKS = {};
+const BASE_QUERIES = {
+  directory: kw => `intitle:"index of" "${kw}"`,
+  backup: kw => `intitle:"index of" "backup" "${kw}"`,
+  config: kw => `filetype:env "${kw}"`,
+  database: kw => `filetype:sql "${kw}"`,
+  logs: kw => `filetype:log "${kw}"`
+};
 
-fetch('data/dorks.json')
-  .then(r => r.json())
-  .then(data => {
-    DORKS = data;
-    const sel = document.getElementById('category');
-    Object.keys(data).forEach(k => {
-      sel.innerHTML += `<option value="${k}">${data[k].label}</option>`;
-    });
-  });
-
-document.getElementById('searchBtn').onclick = () => {
+document.getElementById('run').onclick = () => {
   const kw = keyword.value.trim();
   const siteVal = site.value.trim();
-  const cat = category.value;
 
   if (!kw) {
     alert("Inserisci una parola chiave");
     return;
   }
 
-  let html = "";
+  const types = [...document.querySelectorAll('.type:checked')].map(e => e.value);
+  const exts  = [...document.querySelectorAll('.ext:checked')].map(e => e.value);
 
-  DORKS[cat].queries.forEach(q => {
-    let query = q.replaceAll('{{keyword}}', kw);
-    if (siteVal) query = `site:${siteVal} ` + query;
+  let out = "";
 
-    const url = "https://www.google.com/search?q=" + encodeURIComponent(query);
+  types.forEach(t => {
+    let q = BASE_QUERIES[t](kw);
 
-    html += `🔍 <a href="${url}" target="_blank">${query}</a>\n\n`;
+    if (exts.length && t !== "directory") {
+      exts.forEach(ext => {
+        let fq = q.replace(/filetype:\w+/, `filetype:${ext}`);
+        if (siteVal) fq = `site:${siteVal} ` + fq;
+        const url = "https://www.google.com/search?q=" + encodeURIComponent(fq);
+        out += `🔍 <a href="${url}" target="_blank">${fq}</a>\n`;
+      });
+    } else {
+      if (siteVal) q = `site:${siteVal} ` + q;
+      const url = "https://www.google.com/search?q=" + encodeURIComponent(q);
+      out += `🔍 <a href="${url}" target="_blank">${q}</a>\n`;
+    }
+
+    out += "\n";
   });
 
-  output.innerHTML = html;
+  results.innerHTML = out || "Nessuna query generata";
 };
