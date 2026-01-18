@@ -1,0 +1,38 @@
+{
+  "directory": {
+    "label": "Directory aperte",
+    "queries": [
+      "intitle:\"index of\" \"{{keyword}}\"",
+      "intitle:\"index of\" \".{{keyword}}\""
+    ]
+  },
+  "backup": {
+    "label": "Backup",
+    "queries": [
+      "intitle:\"index of\" \"backup\" \"{{keyword}}\"",
+      "filetype:zip \"{{keyword}}\"",
+      "filetype:sql \"{{keyword}}\""
+    ]
+  },
+  "config": {
+    "label": "Config / Credenziali",
+    "queries": [
+      "filetype:env \"{{keyword}}\"",
+      "filetype:php \"DB_PASSWORD\" \"{{keyword}}\""
+    ]
+  },
+  "wordpress": {
+    "label": "WordPress",
+    "queries": [
+      "filetype:php \"wp-config\" \"{{keyword}}\"",
+      "intitle:\"index of\" \"wp-content\""
+    ]
+  },
+  "logs": {
+    "label": "Log",
+    "queries": [
+      "filetype:log \"{{keyword}}\"",
+      "intitle:\"index of\" \"logs\""
+    ]
+  }
+}

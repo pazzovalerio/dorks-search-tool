@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Google Dorks Tool</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="app">
+  <h1>🔍 Google Dorks Tool</h1>
+  <p class="subtitle">Generatore di query per audit & studio</p>
+
+  <label>Categoria</label>
+  <select id="category"></select>
+
+  <label>Parola chiave</label>
+  <input id="keyword" placeholder="es. backup, password, laravel">
+
+  <label>Dominio / TLD (opzionale)</label>
+  <input id="site" placeholder="example.com oppure .it">
+
+  <button id="searchBtn">Apri ricerche</button>
+
+  <pre id="output"></pre>
+
+  <footer>
+    ⚠️ Uso lecito: audit, studio, siti propri, bug bounty autorizzati
+  </footer>
+</div>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
