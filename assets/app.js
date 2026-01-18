@@ -13,25 +13,23 @@ fetch('data/dorks.json')
 document.getElementById('searchBtn').onclick = () => {
   const kw = keyword.value.trim();
   const siteVal = site.value.trim();
+  const cat = category.value;
 
   if (!kw) {
     alert("Inserisci una parola chiave");
     return;
   }
 
-  let out = "";
+  let html = "";
 
-  DORKS[category.value].queries.forEach(q => {
+  DORKS[cat].queries.forEach(q => {
     let query = q.replaceAll('{{keyword}}', kw);
     if (siteVal) query = `site:${siteVal} ` + query;
 
-    out += query + "\n\n";
+    const url = "https://www.google.com/search?q=" + encodeURIComponent(query);
 
-    window.open(
-      "https://www.google.com/search?q=" + encodeURIComponent(query),
-      "_blank"
-    );
+    html += `🔍 <a href="${url}" target="_blank">${query}</a>\n\n`;
   });
 
-  output.textContent = out;
+  output.innerHTML = html;
 };

@@ -58,3 +58,15 @@ footer {
   color: #7f8596;
   text-align: center;
 }
+
+/* ===============================
+   Risultati cliccabili
+=============================== */
+pre a {
+  color: #60a5fa;
+  text-decoration: none;
+}
+
+pre a:hover {
+  text-decoration: underline;
+}
